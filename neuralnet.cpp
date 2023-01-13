@@ -1,4 +1,10 @@
 #include <vector>
+#include <iostream>
+#include <cstdlib>
+#include <cmath>
+#include <fstream>
+#include <sstream>
+
 using namespace std;
 
 class Net
