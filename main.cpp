@@ -7,42 +7,19 @@
 #include <sstream>
 
 using namespace std;
+// build model resnet50
+struct BasicBlock : torch::nn::Module {
 
-class trajectoryprediction
-{
-public:
-  (const vector<unsigned> &topology);
-  void feedForward(const vector<double> &inputVals);
-  void backProp(const vector<double> &targetVals);
-  void getResults(vector<double> &resultVals) const;
+static const int expansion;
 
-private:
-};
-
-// set environment variable for data
-     const char *path="/home/neehasajja/file.txt";
-     std::ofstream file(path); //open in constructor
-     std::string data("data to wrtite to file");
-     file << data;
-     std::filesystem::path -
-
-
-// get config
-const char config[] = "url=http://example.com\n"
-                  "file=main.exe\n"
-                  "true=0";
-
-std::istringstream is_file(config);
-
-std::string line;
-while( std::getline(is_file, line) )
-{
-std::istringstream is_line(line);
-std::string key;
-if( std::getline(is_line, key, '=') )
-{
-std::string value;
-if( std::getline(is_line, value) )
-  store_line(key, value);
+int 64_t stride;
+torch::nn::Conv2d conv1;
+torch::nn::BatchNorm bn1;
+torch::nn::Conv2d conv2,;
+torch::nn::BatchNorm bn2;
+torch::nn::Sequential downsample;
 }
-}
+
+
+BasicBlock(int64_t inplanes, int64_t planes,int64_t, int64_t stride_=1,
+  
