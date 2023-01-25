@@ -5,49 +5,38 @@
 #include <vector>
 #include <map>
 #include <unorderedset>
-
+#include <string>
 
 
 class trajectoryprediction
 {
-   std::vector<data *> *data_array;
+   std::vector<data *> *data_array; //all of the data
    std::vector<data *> *training_data;
    std::vector<data *> *test_data;
-   std::vector<data *> *val_data;
+   std::vector<data *> *validation_data;
 
-public:
-  (const vector<unsigned> &topology);
-  void feedForward(const vector<double> &inputVals);
-  void backProp(const vector<double> &targetVals);
-  void getResults(vector<double> &resultVals) const;
+   int num_classes;
+   int feature_vector_size;
+   std::map<int8_t, int> class_map;
 
-private:
+   const double TRAIN_SET_PERCENT = 0.75;
+   const double TEST_SET_PERCENT = 0.25;
+   const double VALIDATE_SET_PERCENT = 0.25;
+
+   public:
+   data_handler();
+   ~dat_handler();
+
+   void read_feature_vector(std::string path);
+   void read_feature_vector(std::labels path);
+   void split_data();
+   void count_classes();
+
+   uint32_t convert_to_little_endian(const unsigned char* bytes);
+   std::vector *> get_trtaining_data();
+   std::vector *> get_test_data();
+   std::vector *> get_validation_data();
+
 };
 
-// set environment variable for data
-     const char *path="/home/neehasajja/file.txt";
-     std::ofstream file(path); //open in constructor
-     std::string data("data to wrtite to file");
-     file << data;
-     std::filesystem::path -
-
-
-// get config
-const char config[] = "url=http://example.com\n"
-                  "file=main.exe\n"
-                  "true=0";
-
-std::istringstream is_file(config);
-
-std::string line;
-while( std::getline(is_file, line) )
-{
-std::istringstream is_line(line);
-std::string key;
-if( std::getline(is_line, key, '=') )
-{
-std::string value;
-if( std::getline(is_line, value) )
-  store_line(key, value);
-}
-}
+#endif
